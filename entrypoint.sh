@@ -32,7 +32,7 @@ echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
-FILE="/workdir/app/build/main.pdf"
+FILE="/app/build/main.pdf"
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME="${PDFNAME}"
