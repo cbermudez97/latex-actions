@@ -10,7 +10,12 @@ echo "this repository name is: "
 echo "${REPOSITORY}"
 
 # cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null 
-cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT})
+cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) && cd ..
+
+pwd
+ls -l
+ls build/
+ls -l /workdir/build
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
@@ -33,10 +38,6 @@ echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
-
-pwd
-ls -l
-cd app && ls
 
 FILE=`echo $(basename ${ROOT}) | sed -e "s/\(.*\).tex/\/workdir\/build\/\1.pdf/g"`
 echo "Uploading assets ${FILE} as application/pdf..."
