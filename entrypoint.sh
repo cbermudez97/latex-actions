@@ -32,11 +32,8 @@ REL_ID=`echo ${REL} | python3 -c 'import json,sys;print(json.load(sys.stdin)["id
 echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
-echo ${pwd}
-echo ${ls}
-
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
-FILE=`echo ${ROOT} | sed -e "s/\(.*\)\/.*\/\(.*\).tex/\1\/build\/\2.pdf/g"`
+FILE=`echo $(basename ${ROOT}) | sed -e "s/\(.*\).tex/\/workdir\/build\/\1.pdf/g"`
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME="${PDFNAME}"
