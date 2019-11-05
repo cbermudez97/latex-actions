@@ -1,0 +1,26 @@
+name: Github Action for LaTeX
+description: GitHub Action to build LaTeX documents and upload pdf
+author: MaineK00n
+inputs:
+  token:
+    description: "github token. this is require when comment is true."
+    default: ""
+    required: true
+  repository:
+    description: "github repository name. this is require when comment is true."
+    default: ""
+    required: true
+  pdf_name:
+    description: "release pdf name. this is require when comment is true."
+    default: ""
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.pdf_name }}
+branding:
+  icon: book
+  color: blue
