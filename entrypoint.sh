@@ -9,7 +9,8 @@ PDFNAME="$4"
 echo "this repository name is: "
 echo "${REPOSITORY}"
 
-cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null 
+# cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null 
+cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT})
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
@@ -31,6 +32,9 @@ REL_ID=`echo ${REL} | python3 -c 'import json,sys;print(json.load(sys.stdin)["id
 echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
+echo ${pwd}
+echo ${ls}
+
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
 FILE=`echo ${ROOT} | sed -e "s/\(.*\)\/.*\/\(.*\).tex/\1\/build\/\2.pdf/g"`
 MIME=$(file -b --mime-type "${FILE}")
