@@ -10,11 +10,7 @@ echo "this repository name is: "
 echo "${REPOSITORY}"
 
 # cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null 
-cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) && cd ~
-
-pwd
-ls -l
-ls build/
+cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) && cd /github/workspace
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
