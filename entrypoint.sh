@@ -9,7 +9,7 @@ PDFNAME="$4"
 echo "this repository name is: "
 echo "${REPOSITORY}"
 
-latexmk -c ${ROOT_TEX} &> /dev/null 
+cd /workdir/app/src && latexmk ${ROOT_TEX} &> /dev/null 
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
@@ -32,7 +32,7 @@ echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
-FILE="/workdir/build/main.pdf"
+FILE="/workdir/app/build/main.pdf"
 MIME=$(file -b --mime-type "${FILE}")
 echo "Uploading assets ${FILE} as ${MIME}..."
 NAME="${PDFNAME}"
