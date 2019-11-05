@@ -9,8 +9,7 @@ PDFNAME="$4"
 echo "this repository name is: "
 echo "${REPOSITORY}"
 
-# cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null 
-cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) && cd /github/workspace
+cd $(dirname ${ROOT}) && latexmk $(basename ${ROOT}) &> /dev/null && cd /github/workspace
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
@@ -36,7 +35,7 @@ REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/asset
 
 FILE=`echo ${ROOT} | sed -e "s/\(.*\)\/.*\/\(.*\).tex/\1\/build\/\2.pdf/g"`
 echo "Uploading assets ${FILE} as application/pdf..."
-NAME="${PDFNAME}"
+NAME="${PDFNAME}.pdf"
 
 curl -v \
     -H "${ACCEPT_HEADER}" \
