@@ -33,14 +33,18 @@ echo "Github release created as ID: ${REL_ID}"
 
 # upload built pdf
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
+
+pwd
+ls -l
+cd app && ls
+
 FILE=`echo $(basename ${ROOT}) | sed -e "s/\(.*\).tex/\/workdir\/build\/\1.pdf/g"`
-MIME=$(file -b --mime-type "${FILE}")
-echo "Uploading assets ${FILE} as ${MIME}..."
+echo "Uploading assets ${FILE} as application/pdf..."
 NAME="${PDFNAME}"
 
 curl -v \
     -H "${ACCEPT_HEADER}" \
     -H "${TOKEN_HEADER}" \
-    -H "Content-Type: ${MIME}" \
+    -H "Content-Type: application/pdf" \
     --upload-file "${FILE}" \
     "${REL_URL}?name=${NAME}"
