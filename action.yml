@@ -1,5 +1,5 @@
-name: Github Action for LaTeX
-description: GitHub Action to build LaTeX documents and upload pdf
+name: Github Actions for build LaTeX and release pdf
+description: GitHub Action for build LaTeX and release pdf
 author: MaineK00n
 inputs:
   token:
