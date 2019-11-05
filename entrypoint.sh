@@ -9,7 +9,7 @@ PDFNAME="$4"
 echo "this repository name is: "
 echo "${REPOSITORY}"
 
-cd /workdir/app/src && latexmk ${ROOT_TEX} &> /dev/null 
+cd app/src && latexmk ${ROOT_TEX} &> /dev/null 
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
