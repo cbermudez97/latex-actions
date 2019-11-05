@@ -2,7 +2,7 @@ name: Github Actions for build LaTeX and release pdf
 description: GitHub Action for build LaTeX and release pdf
 author: MaineK00n
 inputs:
-  root_tex:
+  root:
     description: "github root_tex. this is require when comment is true."
     default: ""
     required: true
@@ -22,7 +22,7 @@ runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.root_tex }}
+    - ${{ inputs.root }}
     - ${{ inputs.token }}
     - ${{ inputs.repository }}
     - ${{ inputs.pdf_name }}
