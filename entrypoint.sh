@@ -1,14 +1,15 @@
 #!/bin/sh
 set -eux
 
-GITHUB_TOKEN="$1"
-REPOSITORY="$2"
-PDFNAME="$3"
+ROOT_TEX="$1"
+GITHUB_TOKEN="$2"
+REPOSITORY="$3"
+PDFNAME="$4"
 
 echo "this repository name is: "
 echo "${REPOSITORY}"
 
-latexmk -c main.tex &> /dev/null 
+latexmk -c ${ROOT_TEX} &> /dev/null 
 
 ACCEPT_HEADER="Accept: application/vnd.github.jean-grey-preview+json"
 TOKEN_HEADER="Authorization: token ${GITHUB_TOKEN}"
