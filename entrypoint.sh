@@ -33,7 +33,7 @@ echo "Github release created as ID: ${REL_ID}"
 # upload built pdf
 REL_URL="https://uploads.github.com/repos/${REPOSITORY}/releases/${REL_ID}/assets"
 
-FILE=`echo ${ROOT} | sed -e "s/\(.*\)\/.*\/\(.*\).tex/\1\/build\/\2.pdf/g"`
+FILE=`echo ${ROOT} | sed -e "s/\(.*\)\(.*\).tex/\1\2.pdf/g"`
 echo "Uploading assets ${FILE} as application/pdf..."
 NAME="${PDFNAME}.pdf"
 
